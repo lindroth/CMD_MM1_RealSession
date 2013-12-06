@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CMD_MM1.iml" filepath="$PROJECT_DIR$/CMD_MM1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../_Framework/_Framework.iml" filepath="$PROJECT_DIR$/../_Framework/_Framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../_Generic/_Generic.iml" filepath="$PROJECT_DIR$/../_Generic/_Generic.iml" />
+    </modules>
+  </component>
+</project>
+
