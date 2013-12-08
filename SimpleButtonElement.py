@@ -1,4 +1,3 @@
-
 from _Framework.ButtonElement import ButtonElement
 from _Framework.InputControlElement import InputControlElement
 from _Framework.NotifyingControlElement import NotifyingControlElement
@@ -9,8 +8,8 @@ MIDI_NOTE_TYPE = 0
 MIDI_CC_TYPE = 1
 MIDI_PB_TYPE = 2
 MIDI_MSG_TYPES = (MIDI_NOTE_TYPE,
- MIDI_CC_TYPE,
- MIDI_PB_TYPE)
+				  MIDI_CC_TYPE,
+				  MIDI_PB_TYPE)
 MIDI_NOTE_ON_STATUS = 144
 MIDI_NOTE_OFF_STATUS = 128
 MIDI_CC_STATUS = 176
@@ -23,13 +22,13 @@ class SimpleButtonElement(ButtonElement):
 
 	def __init__(self, is_momentary, msg_type, channel, identifier):
 		ButtonElement.__init__(self, is_momentary, msg_type, channel, identifier)
-		
+
 	def turn_on(self):
 		self.send_value(1)
-		
+
 	def turn_off(self):
 		self.send_value(0)
-		
+
 	def flash(self):
 		self.send_value(2)
 		

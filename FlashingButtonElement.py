@@ -10,8 +10,8 @@ MIDI_NOTE_TYPE = 0
 MIDI_CC_TYPE = 1
 MIDI_PB_TYPE = 2
 MIDI_MSG_TYPES = (MIDI_NOTE_TYPE,
- MIDI_CC_TYPE,
- MIDI_PB_TYPE)
+				  MIDI_CC_TYPE,
+				  MIDI_PB_TYPE)
 MIDI_NOTE_ON_STATUS = 144
 MIDI_NOTE_OFF_STATUS = 128
 MIDI_CC_STATUS = 176
@@ -24,7 +24,7 @@ class FlashingButtonElement(ButtonElement):
 
 	def __init__(self, is_momentary, msg_type, channel, identifier, name, cs):
 		ButtonElement.__init__(self, is_momentary, msg_type, channel, identifier)
-		self._flash_state = 0
+		#self._flash_state = 0
 		self._color = 0
 		self._on_value = 0
 		self._off_value = 127
@@ -42,19 +42,19 @@ class FlashingButtonElement(ButtonElement):
 		self._last_sent_message = None
 		self._on_value = on_value
 		self._off_value = off_value
-	
+
 
 	def set_on_value(self, value):
 		assert (value in range(128))
 		self._last_sent_message = None
 		self._on_value = value
-	
+
 
 	def set_off_value(self, value):
 		assert (value in range(128))
 		self._last_sent_message = None
 		self._off_value = value
-	
+
 
 	def set_force_next_value(self):
 		self._force_next_value = True
@@ -71,13 +71,14 @@ class FlashingButtonElement(ButtonElement):
 
 	def reset(self):
 		self.send_value(0)
-		
+
 	def receive_value(self, value):
 		self._last_sent_message = None
 		ButtonElement.receive_value(self, value)
 
-	def send_value(self, value, force_send = False):		#commented this because of ButtonElement==NoneType errors in log
-		if(type(self) != type(None)):
+	def send_value(self, value,
+				   force_send=False):        #commented this because of ButtonElement==NoneType errors in log
+		if (type(self) != type(None)):
 			assert (value != None)
 			assert isinstance(value, int)
 			assert (value in range(128))
@@ -98,13 +99,13 @@ class FlashingButtonElement(ButtonElement):
 				else:
 					assert False
 				self.send_midi(tuple([status_byte,
-				 data_byte1,
-				 data_byte2]))
+									  data_byte1,
+									  data_byte2]))
 				self._last_sent_message = [value]
 				if self._report_output:
 					is_input = True
 					self._report_value(value, (not is_input))
-				self._flash_state = round((value -1)/7)
+				#self._flash_state = round((value -1)/7)
 
 
 	def script_wants_forwarding(self):
@@ -112,25 +113,11 @@ class FlashingButtonElement(ButtonElement):
 			return False
 		else:
 			return InputControlElement.script_wants_forwarding(self)
-	
+
 
 	def flash(self, timer):
-		if (self._is_being_forwarded and self._flash_state in range(1, 18) and (timer % self._flash_state) == 0):
-			data_byte1 = self._original_identifier
-			data_byte2 = self._color * int(False)
-			status_byte = self._original_channel
-			if (self._msg_type == MIDI_NOTE_TYPE):
-				status_byte += MIDI_NOTE_ON_STATUS
-			elif (self._msg_type == MIDI_CC_TYPE):
-				status_byte += MIDI_CC_STATUS
-			else:
-				assert False
-			self.send_midi((status_byte,
-			 data_byte1,
-			 data_byte2))
-			
+		pass
 
 
-	
 # local variables:
 # tab-width: 4

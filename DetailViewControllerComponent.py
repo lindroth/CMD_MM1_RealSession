@@ -2,7 +2,10 @@
 import Live
 from _Framework.ControlSurfaceComponent import ControlSurfaceComponent
 from _Framework.ButtonElement import ButtonElement
+
 SHOW_PLAYING_CLIP_DELAY = 5
+
+
 class DetailViewControllerComponent(ControlSurfaceComponent):
 	__module__ = __name__
 	__doc__ = ' Component that can toggle the device chain- and clip view of the selected track '
@@ -42,7 +45,7 @@ class DetailViewControllerComponent(ControlSurfaceComponent):
 		return None
 
 	def set_device_clip_toggle_button(self, button):
-		if not(button == None or isinstance(button, ButtonElement)):
+		if not (button == None or isinstance(button, ButtonElement)):
 			isinstance(button, ButtonElement)
 			raise AssertionError
 		if self._device_clip_toggle_button != button:
@@ -56,7 +59,7 @@ class DetailViewControllerComponent(ControlSurfaceComponent):
 		return None
 
 	def set_detail_toggle_button(self, button):
-		if not(button == None or isinstance(button, ButtonElement)):
+		if not (button == None or isinstance(button, ButtonElement)):
 			isinstance(button, ButtonElement)
 			raise AssertionError
 		if self._detail_toggle_button != button:
@@ -70,10 +73,10 @@ class DetailViewControllerComponent(ControlSurfaceComponent):
 		return None
 
 	def set_device_nav_buttons(self, left_button, right_button):
-		if not(left_button == None or isinstance(left_button, ButtonElement)):
+		if not (left_button == None or isinstance(left_button, ButtonElement)):
 			isinstance(left_button, ButtonElement)
 			raise AssertionError
-		if not(right_button == None or isinstance(right_button, ButtonElement)):
+		if not (right_button == None or isinstance(right_button, ButtonElement)):
 			isinstance(right_button, ButtonElement)
 			raise AssertionError
 		identify_sender = True
@@ -92,7 +95,7 @@ class DetailViewControllerComponent(ControlSurfaceComponent):
 		return None
 
 	def set_shift_button(self, button):
-		if not(button == None or isinstance(button, ButtonElement) and button.is_momentary()):
+		if not (button == None or isinstance(button, ButtonElement) and button.is_momentary()):
 			isinstance(button, ButtonElement)
 			raise AssertionError
 		if self._shift_button != button:
@@ -177,9 +180,9 @@ class DetailViewControllerComponent(ControlSurfaceComponent):
 				if (not self.application().view.is_view_visible('Detail')):
 					self.application().view.show_view('Detail')
 				else:
-					self.application().view.hide_view('Detail')		
+					self.application().view.hide_view('Detail')
 
-		
+
 	def _shift_value(self, value):
 		if not self._shift_button != None:
 			raise AssertionError
@@ -195,7 +198,8 @@ class DetailViewControllerComponent(ControlSurfaceComponent):
 		if (self.is_enabled() and (not self._shift_pressed)):
 			if ((not sender.is_momentary()) or (value != 0)):
 				modifier_pressed = True
-				if ((not self.application().view.is_view_visible('Detail')) or (not self.application().view.is_view_visible('Detail/DeviceChain'))):
+				if ((not self.application().view.is_view_visible('Detail')) or (
+				not self.application().view.is_view_visible('Detail/DeviceChain'))):
 					self.application().view.show_view('Detail')
 					self.application().view.show_view('Detail/DeviceChain')
 				else:
