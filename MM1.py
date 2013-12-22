@@ -91,22 +91,17 @@ class MM1(ControlSurface):
 		mixer.set_prehear_volume_control(prehear_control)
 		mixer.master_strip().set_volume_control(master_volume_control)
 
-		#  mixer.master_strip().set_select_button(master_select_button)
 		count = 0
 		for track in range(4):
-			gain_controls = []
-			freq_control = []
-			self.mixer.track_eq(track).set_gain_controls(tuple(
-				[EncoderElement(MIDI_CC_TYPE, CHANNEL, 14 + track, Live.MidiMap.MapMode.absolute),
-				 EncoderElement(MIDI_CC_TYPE, CHANNEL, 10 + track, Live.MidiMap.MapMode.absolute),
-				 EncoderElement(MIDI_CC_TYPE, CHANNEL, 6 + track, Live.MidiMap.MapMode.absolute)]))
-			self.mixer.track_eq(track).set_enabled(True)
-			self.mixer.track_filter(track).set_filter_controls(
-				EncoderElement(MIDI_CC_TYPE, CHANNEL, 18 + track, Live.MidiMap.MapMode.absolute), None)
-			self.mixer.track_filter(track).set_enabled(True)
 			self.mixer.channel_strip(track).set_assign_buttons(
 				SimpleButtonElement(False, MIDI_NOTE_TYPE, CHANNEL, 19 + count),
 				SimpleButtonElement(False, MIDI_NOTE_TYPE, CHANNEL, 20 + count))
+			self.mixer.channel_strip(track).set_device_buttons(
+				self, EncoderElement(MIDI_CC_TYPE, CHANNEL, 6 + track, Live.MidiMap.MapMode.absolute),
+				EncoderElement(MIDI_CC_TYPE, CHANNEL, 10 + track, Live.MidiMap.MapMode.absolute),
+				EncoderElement(MIDI_CC_TYPE, CHANNEL, 14 + track, Live.MidiMap.MapMode.absolute),
+				EncoderElement(MIDI_CC_TYPE, CHANNEL, 18 + track, Live.MidiMap.MapMode.absolute))
+
 			count += 4
 
 		if (USE_SELECT_BUTTONS == True):
@@ -197,7 +192,8 @@ class MM1(ControlSurface):
 		self.set_highlighting_session_component(self.session)
 
 		self.scrollencoder = ScrollEncoderElement(MIDI_CC_TYPE, CHANNEL, 3, Live.MidiMap.MapMode.absolute,
-												  self.session)                   #assign a shift button so that we can switch states between the SessionComponent and the SessionZoomingComponent
+												  self.session)
+		#assign a shift button so that we can switch states between the SessionComponent and the SessionZoomingComponent
 
 		for column in range(N_TRACKS):
 			for row in range(N_SCENES):
