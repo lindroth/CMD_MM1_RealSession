@@ -55,6 +55,8 @@ class CMDChannelStripComponent(ChannelStripComponent):
 			self._first_device.set_device(self._track.devices[0])
 			self._first_device.set_parameter_controls(
 				tuple([self._device_button1, self._device_button2, self._device_button3, self._device_button4]))
+		else:
+			self._first_device.set_device(None)
 
 	def _on_change_devices(self):
 		CMDChannelStripComponent.log_message("DEVICE changed")
