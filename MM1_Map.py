@@ -3,7 +3,7 @@ from MM1_DEFS import * # This imports Colors
 
 USE_SESSION_VIEW = True # Set to false if you don't want this feature
 
-N_TRACKS = 1
+N_TRACKS = 4
 N_SCENES = 1
 
 TRACK_CLIP_BUTTONS = [3]

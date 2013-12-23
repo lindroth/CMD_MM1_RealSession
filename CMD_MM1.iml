@@ -6,6 +6,7 @@
     <orderEntry type="jdk" jdkName="Python 2.7.5 (/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="_Framework" level="project" />
+    <orderEntry type="module" module-name="LOM" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="myDocStringFormat" value="Plain" />

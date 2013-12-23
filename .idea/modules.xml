@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CMD_MM1.iml" filepath="$PROJECT_DIR$/CMD_MM1.iml" />
       <module fileurl="file://$PROJECT_DIR$/untitled/LOM.iml" filepath="$PROJECT_DIR$/untitled/LOM.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../_Framework/_Framework.iml" filepath="$PROJECT_DIR$/../_Framework/_Framework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../_Generic/_Generic.iml" filepath="$PROJECT_DIR$/../_Generic/_Generic.iml" />
     </modules>
   </component>
 </project>
